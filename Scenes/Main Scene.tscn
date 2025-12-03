@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=3 uid="uid://bmr70frd2k5p0"]
+
+[ext_resource type="PackedScene" uid="uid://7q74leae81bs" path="res://Assets/Characters/character.tscn" id="1_tn1qc"]
+[ext_resource type="Script" uid="uid://bc7o23wq856lu" path="res://Scripts/controller.gd" id="2_ke1vn"]
+[ext_resource type="Script" uid="uid://c3kql432e1kvv" path="res://Scripts/character.gd" id="2_v87v2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yvq54"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_atbvb"]
+sky_material = SubResource("ProceduralSkyMaterial_yvq54")
+
+[sub_resource type="Environment" id="Environment_tn1qc"]
+background_mode = 2
+sky = SubResource("Sky_atbvb")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_yvq54"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ke1vn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tn1qc"]
+transparency = 1
+albedo_color = Color(1.5554391, 0.9578735, 0, 0.7490196)
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.4
+emission_enabled = true
+emission = Color(0.072803505, 0.13813208, 0.13813208, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ke1vn"]
+material = SubResource("StandardMaterial3D_tn1qc")
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tn1qc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(20.592001, 0, 0, 0, 0.6594, 0, 0, 0, 137.533, 0, 0, 67.5)
+mesh = SubResource("BoxMesh_yvq54")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_ke1vn")
+
+[node name="Character" parent="." instance=ExtResource("1_tn1qc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90000004, 0)
+script = ExtResource("2_v87v2")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, -6.66134e-16, -8.7422784e-08, -2.990035e-08, 0.9396927, 0.34202015, 8.2150535e-08, 0.34202015, -0.9396927, -4.4130195e-07, 5.5739565, -4.4714217)
+
+[node name="MovementSphere" type="CharacterBody3D" parent="."]
+script = ExtResource("2_ke1vn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MovementSphere"]
+transform = Transform3D(0.39999998, 0, 0, 0, 0.39999998, 0, 0, 0, 0.39999998, 0, 1, 0)
+mesh = SubResource("SphereMesh_ke1vn")
+skeleton = NodePath("")
