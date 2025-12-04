@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://bmr70frd2k5p0"]
 
-[ext_resource type="PackedScene" uid="uid://7q74leae81bs" path="res://Prefab/Characters/character.tscn" id="1_tn1qc"]
+[ext_resource type="PackedScene" uid="uid://7q74leae81bs" path="res://Assets/Characters/character.tscn" id="1_tn1qc"]
 [ext_resource type="Script" uid="uid://bc7o23wq856lu" path="res://Scripts/controller.gd" id="2_ke1vn"]
-[ext_resource type="PackedScene" uid="uid://bqdomhb6idyrl" path="res://Prefab/Gate.tscn" id="3_ke1vn"]
+[ext_resource type="Script" uid="uid://c3kql432e1kvv" path="res://Scripts/character.gd" id="2_v87v2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yvq54"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -41,23 +41,21 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="Floor" type="MeshInstance3D" parent="."]
-transform = Transform3D(20.592001, 0, 0, 0, 0.6594, 0, 0, 0, 137.533, 0, -0.3, -72.600006)
+transform = Transform3D(20.592001, 0, 0, 0, 0.6594, 0, 0, 0, 137.533, 0, 0, 67.5)
 mesh = SubResource("BoxMesh_yvq54")
 
+[node name="Character" parent="." instance=ExtResource("1_tn1qc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90000004, 0)
+script = ExtResource("2_v87v2")
+
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, -7.450581e-09, 8.940697e-08, -2.289909e-08, 0.93969274, 0.34202012, -1.4901161e-07, -0.34202012, 0.9396926, -4.4130195e-07, 5.5739565, -4.4714217)
+transform = Transform3D(-1, -6.66134e-16, -8.7422784e-08, -2.990035e-08, 0.9396927, 0.34202015, 8.2150535e-08, 0.34202015, -0.9396927, -4.4130195e-07, 5.5739565, -4.4714217)
 
 [node name="MovementSphere" type="CharacterBody3D" parent="."]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0.7, -10.400001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0.5)
 script = ExtResource("2_ke1vn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MovementSphere"]
 transform = Transform3D(0.39999998, 0, 0, 0, 0.39999998, 0, 0, 0, 0.39999998, 0, 1, 0)
 mesh = SubResource("SphereMesh_ke1vn")
 skeleton = NodePath("")
-
-[node name="Character" parent="." instance=ExtResource("1_tn1qc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
-
-[node name="Gate" parent="." instance=ExtResource("3_ke1vn")]
-transform = Transform3D(6.6000004, 0, 0, 0, -2.8849516e-07, -3.5640001, 0, 6.6000004, -1.5578739e-07, 0, 3.7, -24.1)

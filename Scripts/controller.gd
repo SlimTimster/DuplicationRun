@@ -9,6 +9,6 @@ func _physics_process(delta: float) -> void:
 	pass
 
 func get_input():
-	var input_direction = Input.get_vector("ui_right", "ui_left", "ui_down", "ui_up")
-	velocity = Vector3(input_direction[0], 0, 0) * speed
+	var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	velocity = Vector3(input_direction.x, 0, input_direction.y) * speed
 	

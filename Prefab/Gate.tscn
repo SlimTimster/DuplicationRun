@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqdomhb6idyrl"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hiiet"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hiiet"]
+transparency = 1
+albedo_color = Color(0, 0.7749999, 0.93, 0.5882353)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i4ifo"]
+size = Vector3(2, 0.1, 2)
+
+[node name="Gate" type="MeshInstance3D"]
+transform = Transform3D(6.6000004, 0, 0, 0, -2.8849516e-07, -3.5640001, 0, 6.6000004, -1.5578739e-07, 0, 0, 0)
+mesh = SubResource("PlaneMesh_hiiet")
+surface_material_override/0 = SubResource("StandardMaterial3D_hiiet")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(0.9999998, 0, 0, 0, -4.3711378e-08, 0.9999998, 0, -0.9999998, -4.3711374e-08, 0, 0, 0)
+text = "+10"
+font_size = 100
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.049000006, -4.047296e-11)
+shape = SubResource("BoxShape3D_i4ifo")
