@@ -1,26 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqdomhb6idyrl"]
+[gd_scene load_steps=5 format=3 uid="uid://bqdomhb6idyrl"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_hiiet"]
+[ext_resource type="Script" uid="uid://okd3gwgnmnn6" path="res://Scripts/gate.gd" id="1_i4ifo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hiiet"]
+size = Vector3(2, 1.2, 0.1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hiiet"]
 transparency = 1
-albedo_color = Color(0, 0.7749999, 0.93, 0.5882353)
+albedo_color = Color(0.050980393, 0.74509805, 0.9764706, 0.4862745)
+metallic_specular = 1.0
+roughness = 0.0
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_i4ifo"]
-size = Vector3(2, 0.1, 2)
+[sub_resource type="PlaneMesh" id="PlaneMesh_hiiet"]
 
-[node name="Gate" type="MeshInstance3D"]
-transform = Transform3D(6.6000004, 0, 0, 0, -2.8849516e-07, -3.5640001, 0, 6.6000004, -1.5578739e-07, 0, 0, 0)
-mesh = SubResource("PlaneMesh_hiiet")
-surface_material_override/0 = SubResource("StandardMaterial3D_hiiet")
+[node name="Gate" type="Area3D"]
+transform = Transform3D(5.5, 0, 0, 0, 5.5, 0, 0, 0, 5.5, 0, 0, 0)
+script = ExtResource("1_i4ifo")
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(0.9999998, 0, 0, 0, -4.3711378e-08, 0.9999998, 0, -0.9999998, -4.3711374e-08, 0, 0, 0)
 text = "+10"
 font_size = 100
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, -0.049999997)
+shape = SubResource("BoxShape3D_hiiet")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.049000006, -4.047296e-11)
-shape = SubResource("BoxShape3D_i4ifo")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.3711392e-08, -0.6, 0, 1, -2.6226836e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_hiiet")
+mesh = SubResource("PlaneMesh_hiiet")

@@ -6,7 +6,7 @@ extends CharacterBody3D
 @export var rotation_speed = 5
 @export var rotation_min_dist = 2
 
-@onready var movementSphere = $"../MovementSphere"
+@onready var movementSphere = $"../../MovementSphere"
 
 func _physics_process(delta: float) -> void:
 	# Rotate character to look at sphere

@@ -15,6 +15,10 @@ run/main_scene="uid://bmr70frd2k5p0"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
 
+[global_group]
+
+Character="The Characters that can be controlled by the player"
+
 [rendering]
 
 renderer/rendering_method="mobile"
