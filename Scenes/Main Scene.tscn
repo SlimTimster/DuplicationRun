@@ -57,11 +57,16 @@ transform = Transform3D(0.39999998, 0, 0, 0, 0.39999998, 0, 0, 0, 0.39999998, 0,
 mesh = SubResource("SphereMesh_ke1vn")
 skeleton = NodePath("")
 
-[node name="Gate" parent="." instance=ExtResource("3_ke1vn")]
-transform = Transform3D(5.5, 0, 0, 0, 5.5, 0, 0, 0, 5.5, 4.1, 3.5, -17.7)
-
 [node name="CharacterManager" type="Node" parent="."]
 script = ExtResource("3_v87v2")
+character = ExtResource("1_tn1qc")
+gate = ExtResource("3_ke1vn")
 
 [node name="Character" parent="CharacterManager" groups=["Character"] instance=ExtResource("1_tn1qc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="GateSpawnPosRight" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3.5, -140.3)
+
+[node name="GateSpawnPosLeft" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3.5, -140.3)

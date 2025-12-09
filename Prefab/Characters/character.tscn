@@ -9,8 +9,6 @@ height = 1.95
 
 [node name="Character" instance=ExtResource("1_xs8h5")]
 script = ExtResource("2_gfpe3")
-move_speed = 2
-rotation_speed = 2
 
 [node name="Skeleton3D" parent="Rig" index="0"]
 bones/1/position = Vector3(-0.011669749, 0.049801953, 0.8742469)

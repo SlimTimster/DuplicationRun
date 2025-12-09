@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://okd3gwgnmnn6" path="res://Scripts/gate.gd" id="1_i4ifo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hiiet"]
-size = Vector3(2, 1.2, 0.1)
+size = Vector3(1.6806152, 1.2, 0.1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hiiet"]
 transparency = 1
@@ -22,10 +22,10 @@ text = "+10"
 font_size = 100
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, -0.049999997)
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0.0060790763, 0, -0.049999997)
 shape = SubResource("BoxShape3D_hiiet")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.3711392e-08, -0.6, 0, 1, -2.6226836e-08, 0, 0, 0)
+transform = Transform3D(0.84150016, 0, 0, 0, -4.3711392e-08, -0.6, 0, 1, -2.6226836e-08, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_hiiet")
 mesh = SubResource("PlaneMesh_hiiet")

@@ -1,9 +1,9 @@
 extends CharacterBody3D
 
-@export var move_speed = 10
+@export var move_speed = 6
 @export var move_min_dist = 2
 
-@export var rotation_speed = 5
+@export var rotation_speed = 6
 @export var rotation_min_dist = 2
 
 @onready var movementSphere = $"../../MovementSphere"
