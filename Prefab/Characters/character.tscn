@@ -7,7 +7,7 @@
 radius = 0.3
 height = 1.95
 
-[node name="Character" instance=ExtResource("1_xs8h5")]
+[node name="Character" groups=["Character"] instance=ExtResource("1_xs8h5")]
 script = ExtResource("2_gfpe3")
 
 [node name="Skeleton3D" parent="Rig" index="0"]

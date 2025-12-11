@@ -7,7 +7,6 @@ extends Node
 @onready var char_spawn_pos : Vector3 = $"../MovementSphere".position - Vector3(0,0.6,0)
 
 var characters : Array[Node] = []
-var num_characters : int = 1
 
 func _ready() -> void:
 	spawn_characters("+", 1)
@@ -31,7 +30,7 @@ func spawn_gates():
 func spawn_characters(operation : String, operand : int = 1):
 	print("Spawning characters for operation: " + operation + " with operand: " + str(operand))
 	
-	# Determine how many to spawn based on operation
+	# spawn or despawn based on operation
 	match operation:
 		"+":
 			for i in range(operand):
@@ -40,8 +39,28 @@ func spawn_characters(operation : String, operand : int = 1):
 				add_child(new_character)
 				characters.append(new_character)
 		"-":
-			for i in range(1, operand):
-				characters[i].queue_free()
-				characters.remove_at(i)			
+			for i in range(min(operand - 1, characters.size())):
+				characters[0].queue_free()
+				characters.remove_at(0)
+			
+			if characters.size() == 0:
+				for i in range(10):
+					print("YOU LOST YOU LOST YOU LOST")
+		"*":
+			var chars_to_spawn = characters.size() * operand - characters.size()
+			for i in range(chars_to_spawn):
+				var new_character = character.instantiate()
+				new_character.position = char_spawn_pos + Vector3(i, 0, i)
+				add_child(new_character)
+				characters.append(new_character)
+		"/":
+			var characters_to_despawn = characters.size() / operand - characters.size()
+			for i in range(characters_to_despawn):
+				characters[0].queue_free()
+				characters.remove_at(0)
+			
+			if characters.size() == 0:
+				for i in range(10):
+					print("YOU LOST YOU LOST YOU LOST")
 	
 	print("Total characters now: " + str(characters.size()))
